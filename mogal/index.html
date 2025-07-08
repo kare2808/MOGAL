@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MOGAL - Refacciones y Accesorios para Motos</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #111;
+      color: #fff;
+    }
+    nav {
+      background-color: #b10000;
+      padding: 10px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+    }
+    nav ul {
+      display: flex;
+      justify-content: center;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      flex-wrap: wrap;
+    }
+    nav ul li {
+      margin: 0 15px;
+    }
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1em;
+    }
+    nav ul li a:hover {
+      text-decoration: underline;
+    }
+    header {
+      background: url('fondo.jpg') no-repeat center center/cover;
+      padding: 80px 20px;
+      text-align: center;
+      color: white;
+    }
+    header h1 {
+      font-size: 3em;
+      margin: 0;
+      text-shadow: 2px 2px 4px #000;
+    }
+    header p {
+      font-size: 1.2em;
+      margin-top: 10px;
+      text-shadow: 1px 1px 3px #000;
+    }
+    .section {
+      padding: 50px 20px;
+      max-width: 1100px;
+      margin: auto;
+    }
+    .section h2 {
+      color: #f40000;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    .about-text,
+    .products,
+    .services,
+    .contact p {
+      text-align: center;
+      font-size: 1.1em;
+    }
+    .brands-logos {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 20px;
+    }
+    .brands-logos img {
+      height: 80px;
+      width: auto;
+      padding: 10px;
+      background-color: white;
+      border-radius: 10px;
+    }
+    footer {
+      background-color: #000;
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9em;
+      color: #ccc;
+    }
+    .whatsapp-float {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 999;
+    }
+    .whatsapp-float img {
+      width: 60px;
+    }
+    ul.custom-list {
+      list-style: none;
+      padding: 0;
+      text-align: center;
+    }
+    ul.custom-list li {
+      margin: 10px 0;
+      font-size: 1.1em;
+    }
+    .popup {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      width: 80%;
+      max-width: 500px;
+      transform: translate(-50%, -50%);
+      background: #fff;
+      z-index: 1000;
+      padding: 20px;
+      border-radius: 8px;
+    }
+    .popup img {
+      width: 100%;
+      border-radius: 8px;
+    }
+    .popup-close {
+      text-align: right;
+      font-size: 1.2em;
+      cursor: pointer;
+      color: #b10000;
+    }
+    .overlay {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.5);
+      z-index: 999;
+    }
+    .presentation {
+      background: #222;
+      padding: 30px;
+      text-align: center;
+      color: #ccc;
+      border-bottom: 2px solid #f40000;
+    }
+    .presentation h2 {
+      color: #fff;
+    }
+    @media (max-width: 600px) {
+      .brands-logos {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- WhatsApp flotante -->
+<a href="https://wa.me/529621520546" target="_blank" class="whatsapp-float" title="Contáctanos por WhatsApp">
+  <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp" />
+</a>
+
+<!-- Banner popup -->
+<div class="overlay" id="overlay" onclick="cerrarPopup()"></div>
+<div class="popup" id="popup">
+  <div class="popup-close" onclick="cerrarPopup()">✖</div>
+  <img src="banner.jpg" alt="Banner de promoción">
+</div>
+
+<!-- Navegación -->
+<nav>
+  <ul>
+    <li><a href="#inicio">Inicio</a></li>
+    <li><a href="#presentacion">Presentación</a></li>
+    <li><a href="#nosotros">Nosotros</a></li>
+    <li><a href="#marcas">Marcas</a></li>
+    <li><a href="#productos">Productos</a></li>
+    <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#explora">Explora</a></li>
+    <li><a href="javascript:abrirPopup()">Banner</a></li>
+  </ul>
+</nav>
+
+<!-- Encabezado -->
+<header id="inicio">
+  <h1>MOGAL</h1>
+  <p>Refacciones y Accesorios para Motocicletas</p>
+</header>
+
+<!-- Presentación -->
+<section class="presentation" id="presentacion">
+  <p>Josue Macias Paz, Breither Jose Zavala Vazquez, Oscar Zair Nicolas Palomec, Yoselin Karemy Villareal Moreno</p>
+  <p>Centro Escolar Amado Nervo – 2do semestre "B"</p>
+  <p>22 de mayo del 2025</p>
+</section>
+
+<!-- Nosotros -->
+<section class="section" id="nosotros">
+  <h2>Sobre Nosotros</h2>
+  <div class="about-text">
+    <p>En <strong>MOGAL</strong> llevamos más de <strong>10 años</strong> dedicados a la venta de refacciones y accesorios para motocicletas. Nuestro compromiso es brindar productos de calidad, buen precio y atención personalizada para todos nuestros clientes, ya sea al <strong>mayoreo</strong> o <strong>menudeo</strong>.</p>
+  </div>
+</section>
+
+<!-- Marcas -->
+<section class="section" id="marcas">
+  <h2>Marcas que trabajamos</h2>
+  <div class="brands-logos">
+    <img src="marca1.jpg" alt="Marca 1">
+    <img src="marca2.jpg" alt="Marca 2">
+    <img src="marca3.jpg" alt="Marca 3">
+    <img src="marca4.jpg" alt="Marca 4">
+    <img src="marca5.jpg" alt="Marca 5">
+  </div>
+</section>
+
+<!-- Productos -->
+<section class="section" id="productos">
+  <h2>Productos</h2>
+  <ul class="custom-list">
+    <li>🛠 Refacciones originales y genéricas para moto</li>
+    <li>🔋 Baterías, bujías, aceites y filtros</li>
+    <li>🏍️ Accesorios para todo tipo de motociclismo urbano y de trabajo</li>
+    <li>💡 Luces LED, faros, direccionales</li>
+    <li>🛡️ Cascos, guantes, maleteros, espejos</li>
+  </ul>
+</section>
+
+<!-- Servicios -->
+<section class="section" id="servicios">
+  <h2>Servicios</h2>
+  <ul class="custom-list">
+    <li>📦 Venta al por mayor y al por menor</li>
+    <li>🛵 Entrega rápida en tienda física</li>
+    <li>📲 Cotizaciones por teléfono y WhatsApp</li>
+    <li>👨‍🔧 Asesoría personalizada sobre compatibilidad de piezas</li>
+  </ul>
+</section>
+
+<!-- Nueva sección: Explora -->
+<section class="section" id="explora">
+  <h2>Explora más</h2>
+  <ul class="custom-list">
+    <li><a href="ubicacion.html">📍 Ver ubicación completa</a></li>
+    <li><a href="galeria.html">🖼 Ver galería de fotos</a></li>
+    <li><a href="contacto.html">📞 Información de contacto</a></li>
+  </ul>
+</section>
+
+<!-- Footer -->
+<footer>
+  ©️ 2025 MOGAL. Todos los derechos reservados.
+</footer>
+
+<script>
+  function abrirPopup() {
+    document.getElementById("popup").style.display = "block";
+    document.getElementById("overlay").style.display = "block";
+  }
+  function cerrarPopup() {
+    document.getElementById("popup").style.display = "none";
+    document.getElementById("overlay").style.display = "none";
+  }
+</script>
+
+</body>
+</html>
